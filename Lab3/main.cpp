@@ -7,8 +7,27 @@ using namespace std;
 // 4.6.1
 // 1.set Car license number by constructor, setter or by direct read
 // 2. start Car
+//3. add Person (name, address etc) to Car. Person to be added should have a name given by constructor, setter or by direct read
+
+
+class Person{
+private:
+    string name;
+    string address;
+public:
+    Person(string name,string address){
+        this->name= name;
+        this->address = address;
+    }
+    string getName(){
+        return this->name;
+    }
+};
+
+
 class Car {
 private:
+    Person *person;
     string licenseNumber;
 public:
     void setLicenseNumber(string licenseNumber) {
@@ -29,6 +48,13 @@ public:
     Car( string licenseNumber) {
         this->licenseNumber = licenseNumber;
     }
+    Car(string licenseNumber,Person *person){
+        this->licenseNumber = licenseNumber;
+        this->person =person;
+    }
+    Person* getPerson(){
+        return this->person;
+    }
 };
 
 int main() {
@@ -41,4 +67,10 @@ int main() {
     newCar2->setLicenseNumber("DJJJJJ");
     cout<< newCar2->getLicenseNumber()<<endl;
     newCar2->start();
+
+    Person *andrei;
+    andrei = new Person("Andrei","Catargiu");
+    Car *newCar3 = new Car("DJ10AVH",andrei);
+    cout << newCar3->getLicenseNumber()<<endl;
+    cout << newCar3->getPerson()->getName()<<endl;
 }
