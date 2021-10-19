@@ -5,7 +5,8 @@
 using namespace std;
 
 // 4.6.1
-// set Car license number by constructor, setter or by direct read
+// 1.set Car license number by constructor, setter or by direct read
+// 2. start Car
 class Car {
 private:
     string licenseNumber;
@@ -19,6 +20,9 @@ public:
     }
     string getLicenseNumber() {
         return this->licenseNumber;
+    }
+    void start(){
+        cout<<" Car"<<this->licenseNumber<< "started"<<endl;
     }
     Car() {
     }
@@ -35,5 +39,6 @@ int main() {
 
     Car *newCar2 = new Car();
     newCar2->setLicenseNumber("DJJJJJ");
-    cout<< newCar2->getLicenseNumber();
+    cout<< newCar2->getLicenseNumber()<<endl;
+    newCar2->start();
 }
